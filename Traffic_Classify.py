@@ -53,7 +53,7 @@ def kmeans_bow(all_descriptors, num_clusters):
     bow_dict = kmeans.cluster_centers_
     return bow_dict
 
-num_clusters = 5
+num_clusters = 100
 if not os.path.isfile('Traffic-Data/bow_dictionary150.pkl'):
     BoW = kmeans_bow(all_descriptors, num_clusters)
     pickle.dump(BoW, open('Traffic-Data/bow_dictionary150.pkl', 'wb'))
@@ -99,6 +99,9 @@ print(img_predict)
 for key, value in label2id.items():
     if value == img_predict[0]:
         print('Your prediction: ', key)
+
+#Accuracy
+print(svm.score(X_test, Y_test))
 
 #Show image
 cv2.imshow("Img", img_test)
